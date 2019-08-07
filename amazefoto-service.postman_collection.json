@@ -1,0 +1,98 @@
+{
+	"info": {
+		"_postman_id": "84e32dce-7285-4459-98a4-b2e96605d359",
+		"name": "amazefoto-service",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "POST photo",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "  {\r\n    id: \"76978b42-b5b2-11e9-8e2d-6fe1b79f4831\",\r\n    name: \"Lake Atitlan\",\r\n    price: 99.99,\r\n    date: new Date(),\r\n    url: lakeAtitlan,\r\n    category: { name: \"Landscape\", description: \"Landscape category\" },\r\n    photographer: {\r\n      firstName: \"Tom\",\r\n      lastName: \"Johnson\",\r\n      email: \"tom.johnson@gmail.com\",\r\n      phone: \"313-330-1234\"\r\n    }\r\n  },\r\n  {\r\n    id: \"76978b42-b5b2-11e9-8e2d-6fe1b79f4832\",\r\n    name: \"Yosemite Valley\",\r\n    price: 20.99,\r\n    date: new Date(),\r\n    url: yosemiteValley,\r\n    categoryId: 3,\r\n    category: { id: 3, name: \"Portrait\", description: \"Portrait category\" },\r\n    photographerId: 102,\r\n    photographer: {\r\n      id: 102,\r\n      firstName: \"Amy\",\r\n      lastName: \"William\",\r\n      email: \"amy.william@real.com\",\r\n      phone: \"800-800-1234\"\r\n    }\r\n  },"
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/photos",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"photos"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST category",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{ \"name\": \"Landscape\", \"description\": \"Landscape category\" }"
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/categories",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"categories"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET categories",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:5000/api/categories",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"categories"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
