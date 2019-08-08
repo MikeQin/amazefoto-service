@@ -3,14 +3,51 @@ const router = express.Router();
 const { Photographer } = require("../models/schemas");
 
 router.get("/photographers", (req, res, next) => {
-  Photographer.find({})
+  const firstName = req.query.firstName;
+  const lastName = req.query.lastName;
+  if (!firstName && !lastName) {
+    Photographer.find({})
+      .then(photographer => {
+        res.send(photographer);
+      })
+      .catch(next);
+  }
+  else if (firstName) {
+    Photographer.find({ firstName: firstName })
+      .collation({ locale: 'en', strength: 2 }) // case insensitive
+      .then(photographer => {
+        res.send(photographer);
+      })
+      .catch(next);
+  }
+  else if (lastName) {
+    Photographer.find({ lastName: lastName })
+      .collation({ locale: 'en', strength: 2 }) // case insensitive
+      .then(photographer => {
+        res.send(photographer);
+      })
+      .catch(next);
+  }
+  else {
+    Photographer.find({ firstName: firstName, lastName: lastName })
+      .collation({ locale: 'en', strength: 2 }) // case insensitive
+      .then(photographer => {
+        res.send(photographer);
+      })
+      .catch(next);
+  }
+});
+
+router.get("/photographers/:id", (req, res, next) => {
+  console.log("GET findById {}", req.params.id);
+  Photographer.findById(req.params.id)
     .then(photographer => {
       res.send(photographer);
     })
     .catch(next);
 });
 
-router.get("/photographers/:id", (req, res, next) => {
+router.get("/photographers", (req, res, next) => {
   console.log("GET findById {}", req.params.id);
   Photographer.findById(req.params.id)
     .then(photographer => {

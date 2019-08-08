@@ -3,11 +3,22 @@ const router = express.Router();
 const { Photo } = require("../models/schemas");
 
 router.get("/photos", (req, res, next) => {
-  Photo.find({})
-    .then(photo => {
-      res.send(photo);
-    })
-    .catch(next);
+  const name = req.query.name;
+  if (name) {
+    Photo.find({ name: name })
+      .collation({ locale: 'en', strength: 2 }) // case insensitive
+      .then(photo => {
+        res.send(photo);
+      })
+      .catch(next);
+  }
+  else {
+    Photo.find({})
+      .then(photo => {
+        res.send(photo);
+      })
+      .catch(next);
+  }
 });
 
 router.get("/photos/:id", (req, res, next) => {

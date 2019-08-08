@@ -50,7 +50,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{ \"name\": \"Landscape\", \"description\": \"Landscape category\" }"
+					"raw": "{ \"name\": \"Wedding\", \"description\": \"Wedding category\" }"
 				},
 				"url": {
 					"raw": "http://localhost:5000/api/categories",
@@ -89,6 +89,67 @@
 					"path": [
 						"api",
 						"categories"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET categories  by Id",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:5000/api/categories/5d4bc429d677d737e8110ed5",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"categories",
+						"5d4bc429d677d737e8110ed5"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET categories by name",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:5000/api/categories?name=portrait",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"categories"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "portrait"
+						}
 					]
 				}
 			},

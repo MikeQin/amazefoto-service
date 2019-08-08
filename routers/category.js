@@ -3,11 +3,23 @@ const router = express.Router();
 const { Category } = require("../models/schemas");
 
 router.get("/categories", (req, res, next) => {
-  Category.find({})
-    .then(category => {
-      res.send(category);
-    })
-    .catch(next);
+  let catname = req.query.name;
+  if (catname) {
+    console.log('query.name', catname);
+    Category.find({ name: catname })
+      .collation({ locale: 'en', strength: 2 }) // case insensitive
+      .then(category => {
+        res.send(category);
+      })
+      .catch(next);
+  }
+  else {
+    Category.find({})
+      .then(category => {
+        res.send(category);
+      })
+      .catch(next);
+  }
 });
 
 router.get("/categories/:id", (req, res, next) => {
