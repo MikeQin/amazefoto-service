@@ -16,6 +16,7 @@ mongoose.connect(
     authSource: "admin"
   },
   (error, db) => {
+    console.log('connected to mongodb...');
     if (error) console.log(error);
   }
 );
