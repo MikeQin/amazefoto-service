@@ -23,7 +23,7 @@
   "homepage": "https://github.com/MikeQin/amazefoto-service#README",
   "dependencies": {
     "express": "^4.17.1",
-    "mongoose": "^5.6.8",
+    "mongoose": "^5.7.5",
     "mongoose-uuid2": "^2.3.0",
     "uuid": "^3.3.2"
   }
